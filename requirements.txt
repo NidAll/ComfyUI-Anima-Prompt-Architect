@@ -1,0 +1,4 @@
+timm>=1.0
+accelerate>=1.0
+transformers==5.15.1
+# Requires a recent ComfyUI with native INT8 ConvRot and compatible Comfy Kitchen CUDA kernels.

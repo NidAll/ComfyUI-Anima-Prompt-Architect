@@ -1,0 +1,13 @@
+[project]
+name = "comfyui-anima-prompt-architect"
+version = "0.2.0"
+description = "Local BF16 PixAI and native INT8 MiniCPM image-to-Anima prompt architecture"
+requires-python = ">=3.12"
+license = {text = "Apache-2.0"}
+
+[tool.comfy]
+DisplayName = "Anima Prompt Architect"
+
+[project.urls]
+Repository = "https://github.com/NidAll/ComfyUI-Anima-Prompt-Architect"
+Models = "https://huggingface.co/NidAll/Anima-Prompt-Architect-Models"

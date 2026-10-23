@@ -1,0 +1,34 @@
+{
+  "family": "minicpm_v47_architect",
+  "comfyui_classes": [
+    "AnimaPromptArchitectMiniCPM"
+  ],
+  "detect_primary": [
+    "language_model.layers.0.linear_attn.in_proj_qkv.weight",
+    "vision_tower.encoder.layers.0.self_attn.q_proj.weight",
+    "merger.mlp.0.linear_2.weight"
+  ],
+  "detect_hints": [],
+  "quantize": [
+    "(^|\\.)language_model\\.layers\\.\\d+\\.mlp\\.(gate_proj|up_proj|down_proj)\\.weight$",
+    "(^|\\.)language_model\\.layers\\.\\d+\\.self_attn\\.(q_proj|k_proj|v_proj|o_proj)\\.weight$",
+    "(^|\\.)language_model\\.layers\\.\\d+\\.linear_attn\\.(in_proj_qkv|in_proj_z|out_proj)\\.weight$"
+  ],
+  "keep": [
+    "(^|\\.)language_model\\.layers\\.(0|23)\\.",
+    "(^|\\.)(vision_tower|merger|lm_head|embed_tokens)(\\.|$)",
+    "\\.linear_attn\\.(A_log|dt_bias|conv1d|norm|in_proj_a|in_proj_b)(\\.|$)"
+  ],
+  "exclude": [
+    "(^|\\.)(embeddings?|embed_tokens|token_embedding|word_embeddings|position_embeddings|token_type_embeddings|shared)(\\.|$)",
+    "(^|\\.)(norm|layer_norm|layernorm|rms_norm|final_layer_norm|input_layernorm|post_attention_layernorm|ln_final|ln_\\d+|q_norm|k_norm)\\.(weight|bias)$",
+    "(^|\\.)(lm_head|output_head|classifier|score|pooler|text_projection|projection_head|language_model_head)(\\.|$)",
+    "(^|\\.)(visual|vision_model|vision_tower|image_encoder|audio|multi_modal_projector|multimodal_projector)(\\.|$)"
+  ],
+  "min_weight_numel": 4096,
+  "max_rel_l2": 0.25,
+  "min_cosine": 0.95,
+  "notes": "MiniCPM-V 4.7 1B Qwen3.5 hybrid. Package-local Anima Prompt Architect consumer; BF16 vision/merger, embeddings/head, boundary blocks and recurrent controls. Recipe: INT8 ConvRot, BF16 retained tensors, optional weight-MSE scales.",
+  "component": "text_encoder",
+  "schema_version": 1
+}
