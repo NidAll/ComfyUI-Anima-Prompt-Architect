@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-anima-prompt-architect"
-version = "0.2.0"
+version = "0.2.1"
 description = "Local BF16 PixAI and native INT8 MiniCPM image-to-Anima prompt architecture"
 requires-python = ">=3.12"
 license = {text = "Apache-2.0"}

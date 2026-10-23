@@ -134,4 +134,3 @@ class MiniCPMV4_7Config(PreTrainedConfig):
 
 
 __all__ = ["MiniCPMV4_7Config", "MiniCPMV4_7VisionConfig"]
-

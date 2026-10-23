@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Declare NumPy in the portable CI environment used by safetensors and asset decoding.
+
 ## 0.2.0
 
 - Public release with one self-contained safetensors file per model.
