@@ -34,6 +34,24 @@ def model_choices():
     return folder_paths.get_filename_list(MODEL_KIND)
 
 
+def visual_model_choices():
+    from safetensors import SafetensorError
+
+    choices = []
+    for name in model_choices():
+        try:
+            with safe_open(resolve_bundle(name), framework="pt", device="cpu") as reader:
+                metadata = reader.metadata() or {}
+                mini = json.loads(metadata.get("anima_prompt_architect", "{}"))
+                lfm = json.loads(metadata.get("lfm3_vl", "{}"))
+                if ((isinstance(mini, dict) and mini.get("kind") == "minicpm" and mini.get("version") == 1)
+                        or (isinstance(lfm, dict) and lfm.get("kind") == "lfm3_vl" and lfm.get("version") == 1)):
+                    choices.append(name)
+        except (ValueError, OSError, SafetensorError):
+            continue
+    return choices
+
+
 def resolve_bundle(name):
     if not name or ".." in Path(name).parts or Path(name).is_absolute() or "\\" in name or Path(name).suffix != ".safetensors":
         raise ValueError("Select a safetensors model inside models/anima_prompt_architect.")

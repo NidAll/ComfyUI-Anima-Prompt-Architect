@@ -18,3 +18,8 @@
   This package does not bundle Anima weights.
 
 New package code is licensed under Apache-2.0. See LICENSE.
+
+- `architect/lfm3/vendor/`: pinned `LiquidAI/LFM3-VL-2B` revision
+  `f83d2b0a2296aaa277f394990a9b8b949ddf9691`. Python source retains its
+  Apache-2.0 notices. Model weights use the upstream LFM Open License v1.0.
+  See `architect/lfm3/NOTICE.md` and its retained licenses for local changes.
